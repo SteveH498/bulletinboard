@@ -14,7 +14,7 @@ public class Bulletin {
 
 	private String message;
 
-	private String user;
+	private String userID;
 
 	protected Bulletin() {
 
@@ -24,9 +24,9 @@ public class Bulletin {
 		this.message = message;
 	}
 
-	public Bulletin(String message, String user) {
+	public Bulletin(String message, String userID) {
 		this.message = message;
-		this.user = user;
+		this.userID = userID;
 	}
 
 	public Long getId() {
@@ -41,12 +41,12 @@ public class Bulletin {
 		this.message = message;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUserID() {
+		return userID;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
 }
