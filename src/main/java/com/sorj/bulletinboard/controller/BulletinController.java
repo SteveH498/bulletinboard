@@ -31,11 +31,13 @@ public class BulletinController {
 		return "Hello " + getAuthentictedUserName() + "! Service is up and running! ";
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = "/bulletin")
+	// Read all Bulletins
+	@RequestMapping(method = RequestMethod.GET, path = "/bulletins")
 	ResponseEntity<Iterable<Bulletin>> getBulletins() {
 		return ResponseEntity.ok(this.bulletinRepository.findAll());
 	}
 
+	// Create a bulletin
 	@RequestMapping(method = RequestMethod.POST, path = "/bulletin")
 	ResponseEntity<Bulletin> addBulletin(@RequestBody Bulletin bulletin) {
 
@@ -48,6 +50,7 @@ public class BulletinController {
 		return ResponseEntity.created(uri).body(savedBulletin);
 	}
 
+	// Delete a bulletin
 	@RequestMapping(value = "/bulletin/{id}", method = RequestMethod.DELETE)
 	ResponseEntity<?> delete(@PathVariable Long id) {
 
