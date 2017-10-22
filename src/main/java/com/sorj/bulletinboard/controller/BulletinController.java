@@ -1,6 +1,7 @@
 package com.sorj.bulletinboard.controller;
 
 import java.net.URI;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +23,8 @@ public class BulletinController {
 	@Autowired
 	BulletinRepository bulletinRepository;
 
-	private String getAuthentictedUserName() {
-		return SecurityContextHolder.getContext().getAuthentication().getName();
+	private Optional<String> getAuthentictedUserName() {
+		return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication()).map( a -> a.getName() );
 	}
 
 	@RequestMapping(path = "/check", method = RequestMethod.GET)
@@ -41,7 +42,7 @@ public class BulletinController {
 	@RequestMapping(method = RequestMethod.POST, path = "/bulletin")
 	ResponseEntity<Bulletin> addBulletin(@RequestBody Bulletin bulletin) {
 
-		Bulletin newBulletin = new Bulletin(bulletin.getMessage(), getAuthentictedUserName());
+		Bulletin newBulletin = new Bulletin(bulletin.getMessage(), getAuthentictedUserName().orElse("Anonymous"));
 
 		Bulletin savedBulletin = bulletinRepository.save(newBulletin);
 
