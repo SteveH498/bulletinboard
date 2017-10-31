@@ -3,20 +3,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { fetchBulletins } from './actions';
 
-class BulletinList  extends React.Component {	
+import List, { ListItem, ListItemText } from 'material-ui/List';
+
+import Grid from 'material-ui/Grid';
+
+class BulletinList extends React.Component {	
 	
 	componentDidMount() {
 		this.props.dispatch(fetchBulletins());		
 	}
 	
   render(){			  
-	 const bulletinsList = this.props.bulletins.map((bulletin) =>
-	  	<li key={bulletin.id}>{bulletin.message}</li>
+	 const bulletinsList = this.props.bulletins.map((bulletin) =>	 	
+	 	<ListItem default>
+	  		<ListItemText primary={bulletin.userID} secondary={bulletin.message} key={bulletin.id} />
+	  	</ListItem>		
 	  );
 	  return(
-        <ul>
-          {bulletinsList}
-        </ul>			  
+		<Grid container>
+			<Grid item xs={12}>
+	        	<List>
+	        	{bulletinsList}
+	        	</List>	
+	        </Grid>
+	     </Grid>
 	  );
   }
 }

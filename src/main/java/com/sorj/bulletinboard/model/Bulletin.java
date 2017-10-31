@@ -11,7 +11,8 @@ public class Bulletin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
+	
+	
 	private String message;
 
 	private String userID;

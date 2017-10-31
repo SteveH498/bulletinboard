@@ -29,7 +29,7 @@ public class BulletinController {
 
 	@RequestMapping(path = "/check", method = RequestMethod.GET)
 	public String healthCheck() {
-		return "Hello " + getAuthentictedUserName() + "! Service is up and running! ";
+		return "Hello " + getAuthentictedUserName().orElse("Anonymous") + "! Service is up and running! ";
 	}
 
 	// Read all Bulletins
