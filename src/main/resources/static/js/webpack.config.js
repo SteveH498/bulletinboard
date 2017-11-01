@@ -7,17 +7,15 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   module: {
-	  rules: [
-		{
-		  test: /\.js$/,
-		  exclude: /(node_modules|bower_components)/,
-		  use: {
-			loader: 'babel-loader',
-			options: {
-			  presets: ["stage-1","react"]
-			}
-		  }
-		}
-	  ]
-	}
+    rules: [{
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ["stage-1", "react"]
+        }
+      }
+    }]
+  }
 };

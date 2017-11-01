@@ -14,32 +14,32 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 
 export let store = createStore(reducer, {}, applyMiddleware(
-      thunkMiddleware
+  thunkMiddleware
 ));
 
 
 const MainView = () => (
-	<div>
-		<AppBar position="static" color="primary">
-		  <Toolbar>
-	        <Typography type="title" color="inherit">
-	          Bulletin Board
-	        </Typography>
-	      </Toolbar>
-	    </AppBar>
-		<BulletinList/>
-		<PostBulletinForm />
-	</div>
-); 
+  <div>
+    <AppBar position="static" color="primary">
+      <Toolbar>
+        <Typography type="title" color="inherit">
+          Bulletin Board
+        </Typography>
+      </Toolbar>
+    </AppBar>
+    <BulletinList/>
+    <PostBulletinForm />
+  </div>
+);
 
 const App = () => (
-	 <Provider store={store}>
-	 	<MainView/>
-	</Provider>	
+  <Provider store={store}>
+    <MainView/>
+  </Provider>
 );
 
 
-ReactDOM.render(	 
-	  <App  />,
-	  document.getElementById("root")
+ReactDOM.render(
+  <App  />,
+  document.getElementById("root")
 );
